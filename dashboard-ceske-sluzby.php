@@ -76,9 +76,9 @@ function ceske_sluzby_feedy_dashboard_widget() {
             <div style="width:55%;float:right;">
                 <strong>Feed</strong> pro <strong>Google Merchant</strong> najdete <a href="<?php echo $url_google ?>">zde.</a></div>
             <div style="clear:both;"><?php echo $url_google ?></div>
-        <hr>
-        </div>
+        <hr>        
 <?php }
+            ?> </div> <?php
 
 }
 
