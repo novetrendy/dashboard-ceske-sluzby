@@ -9,6 +9,9 @@
 * GitHub Plugin URI: https://github.com/novetrendy/dashboard-ceske-sluzby
 * License: GPL2
 *** Changelog ***
+2017.01.12 - version 170112
+* Added date and time of last update feed
+/*
 2016.12.21 - version 161221
 * First version
 */
@@ -32,6 +35,9 @@ function ceske_sluzby_feedy_dashboard_widget() {
         $url_pricemania = content_url('pricemania.xml');
         $url_google = site_url('?feed=google');
         $dirsd = get_stylesheet_directory_uri();
+        $heureka_xml = WP_CONTENT_DIR.'/heureka.xml';
+        $zbozi_xml = WP_CONTENT_DIR.'/zbozi.xml';
+        $pricemania_xml = WP_CONTENT_DIR.'/pricemania.xml';
         //print_r(get_option( 'active_plugins'));
         ?>
         <div style="width:100%">
@@ -45,8 +51,11 @@ function ceske_sluzby_feedy_dashboard_widget() {
                 <strong>Feed</strong> pro <strong>Heureka.cz</strong> najdete <a href="<?php echo $url_heureka ?>">zde.</a> <?php echo $url_heureka ?>
             </div>
             <div style="clear:both;"><strong>Průběžně generovaný feed pro Heureka.cz</strong> najdete <a href="<?php echo $url_heureka1 ?>">zde.</a> <?php echo $url_heureka1 ?> </div>
-        <hr>
-        <?php }
+            <?php
+            if (file_exists($heureka_xml)) {
+            echo '<div style="clear:both;"><strong>Poslední aktualizace heureka.xml: </strong><span style="color:#D4131F">'.date ("d.m.Y H:i:s.", filemtime($heureka_xml)).'</span></div><hr>';
+            }
+        }
            if (get_option( 'wc_ceske_sluzby_xml_feed_zbozi-aktivace') == 'yes'){
         ?>
             <div style="width:45%;float:left;">
@@ -56,8 +65,11 @@ function ceske_sluzby_feedy_dashboard_widget() {
                 <strong>Feed</strong> pro <strong>Zbozi.cz</strong> najdete <a href="<?php echo $url_zbozi ?>">zde.</a> <?php echo $url_zbozi ?>
             </div>
             <div style="clear:both;"><strong>Průběžně generovaný feed pro Zbozi.cz</strong> najdete <a href="<?php echo $url_zbozi1 ?>">zde.</a><br /> <?php echo $url_zbozi1 ?> </div>
-        <hr>
-        <?php }
+            <?php
+            if (file_exists($zbozi_xml)) {
+            echo '<div style="clear:both;"><strong>Poslední aktualizace zbozi.xml: </strong><span style="color:#D4131F">'.date ("d.m.Y H:i:s.", filemtime($zbozi_xml)).'</span></div><hr>';
+            }
+         }
         if (get_option( 'wc_ceske_sluzby_xml_feed_pricemania-aktivace') == 'yes'){
         ?>
             <div style="width:45%;float:left;">
@@ -66,8 +78,11 @@ function ceske_sluzby_feedy_dashboard_widget() {
             <div style="width:55%;float:right;">
                 <strong>Feed</strong> pro <strong>Pricemania.cz</strong> najdete <a href="<?php echo $url_pricemania ?>">zde.</a></div>
             <div style="clear:both;"><?php echo $url_pricemania ?></div>
-        <hr>
-        <?php }
+            <?php
+            if (file_exists($pricemania_xml)) {
+            echo '<div style="clear:both;"><strong>Poslední aktualizace pricemania.xml: </strong><span style="color:#D4131F">'.date ("d.m.Y H:i:s.", filemtime($pricemania_xml)).'</span></div><hr>';
+            }
+        }
         if (get_option( 'wc_ceske_sluzby_xml_feed_heureka-aktivace') == 'yes'){
         ?>
             <div style="width:45%;float:left;">
