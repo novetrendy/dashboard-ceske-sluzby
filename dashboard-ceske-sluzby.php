@@ -3,7 +3,7 @@
 * Plugin Name: Adresy feedů pro České služby
 * Plugin URI: https://webstudionovetrendy.eu/
 * Description: Zobrazí na nástěnce widget s adresami aktivovaných feedů. Pro chod pluginu jsou nutné pluginy České služby a WooCommerce
-* Version: 161221
+* Version: 170112
 * Author: Webstudio Nove Trendy
 * Author URI: https://webstudionovetrendy.eu/
 * GitHub Plugin URI: https://github.com/novetrendy/dashboard-ceske-sluzby
