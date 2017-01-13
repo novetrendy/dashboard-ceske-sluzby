@@ -11,6 +11,7 @@
 *** Changelog ***
 2017.01.13 - version 170113
 * Added settings button
+* Capability for settings buttons (manage_options)
 /*
 2017.01.12 - version 170112
 * Added date and time of last update feed
@@ -43,7 +44,9 @@ function ceske_sluzby_feedy_dashboard_widget() {
         $pricemania_xml = WP_CONTENT_DIR.'/pricemania.xml';
         //print_r(get_option( 'active_plugins'));
         ?>
-        <div style="width:100%">
+        <div style="width:100%"> <?php
+        if (current_user_can('manage_options')){
+        ?>
             <p style="font-size:18px;line-height:22px;font-weight:bold;margin-bottom:15px;">Nastavení</p>
             <form  method="post">
         <a href="admin.php?page=wc-settings&tab=ceske-sluzby"><input style="margin-bottom:5px;"  class="button-primary woocommerce-save-button" type="submit" name="nastaveni" value="Obecné"></a>
@@ -64,6 +67,7 @@ function ceske_sluzby_feedy_dashboard_widget() {
             <?php
             }
         echo '<hr>';
+        }
             if (get_option( 'wc_ceske_sluzby_xml_feed_heureka-aktivace') == 'yes'){
             ?>
             <div style="width:45%;float:left;">
